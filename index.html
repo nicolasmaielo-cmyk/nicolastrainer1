@@ -1,0 +1,495 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Método Nicolas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--primary:#00ff88;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+
+body{
+background:#000;
+color:#fff;
+}
+
+/* HERO */
+.hero{
+position:relative;
+height:100vh;
+overflow:hidden;
+}
+
+.hero video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.35);
+}
+
+.overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(transparent,#000);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero img{
+width:130px;
+margin-bottom:20px;
+filter:drop-shadow(0 0 20px #00ff88);
+}
+
+.hero h1{
+font-size:clamp(32px,6vw,70px);
+font-weight:900;
+}
+
+.hero span{
+color:var(--primary);
+text-shadow:0 0 25px var(--primary);
+}
+
+.btn{
+margin-top:25px;
+padding:18px 45px;
+background:var(--primary);
+color:#000;
+border-radius:8px;
+text-decoration:none;
+font-weight:800;
+}
+
+/* SECTIONS */
+.section{
+max-width:1100px;
+margin:auto;
+padding:100px 20px;
+}
+
+.title{
+text-align:center;
+font-size:34px;
+margin-bottom:40px;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:#111;
+padding:25px;
+border-radius:12px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+border:1px solid var(--primary);
+}
+
+.highlight{
+color:var(--primary);
+font-weight:700;
+}
+
+/* WHATS */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:var(--primary);
+color:#000;
+padding:18px;
+border-radius:50%;
+text-decoration:none;
+box-shadow:0 0 20px var(--primary);
+}
+.fade-up {
+opacity:0;
+transform:translateY(40px);
+transition: all 1s ease;
+}
+
+.fade-up.active {
+opacity:1;
+transform:translateY(0);
+}
+
+/* botão pulsando */
+@keyframes pulse{
+0%{box-shadow:0 0 0 0 rgba(0,255,136,0.7);}
+70%{box-shadow:0 0 0 15px rgba(0,255,136,0);}
+100%{box-shadow:0 0 0 0 rgba(0,255,136,0);}
+}
+
+.btn{
+animation:pulse 2s infinite;
+}
+
+/* hover premium */
+.card{
+position:relative;
+overflow:hidden;
+}
+
+.card::before{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(120deg,transparent,rgba(0,255,136,0.3),transparent);
+left:-100%;
+transition:0.5s;
+}
+<div style="text-align:center;margin-top:20px;">
+<p>Vagas disponíveis hoje:</p>
+<h2 id="contador">5</h2>
+</div>
+
+<script>
+let vagas = 5;
+setInterval(()=>{
+if(vagas > 1){
+vagas--;
+document.getElementById('contador').innerText = vagas;
+}
+},5000);
+</script>
+.card:hover::before{
+left:100%;
+}
+#loader{
+position:fixed;
+width:100%;
+height:100%;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+#loader h1{
+color:#00ff88;
+}
+</style>
+</head>
+
+<body>
+<div id="loader">
+<h1>MÉTODO NICOLAS</h1>
+</div>
+<!-- HERO -->
+<section class="hero">
+<video autoplay muted loop>
+<source src="video.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+
+<div class="hero-content">
+<img src="logo.png">
+<h1>RESULTADO NÃO É SORTE<br><span>É MÉTODO</span></h1>
+<p style="margin-top:10px;font-size:18px;">
+Treino + avaliação completa + acompanhamento 100% individualizado
+</p>
+<p>Treino com estratégia, avaliação completa e acompanhamento 100% individualizado</p>
+<a href="https://wa.me/5531988786990?text=Quero%20começar" class="btn">QUERO MINHA AVALIAÇÃO</a>
+</div>
+</section>
+
+<!-- SOBRE -->
+<section class="section">
+<h2 class="title">Sobre Mim</h2>
+<p style="text-align:center;max-width:800px;margin:auto;">
+Sou personal trainer especializado em transformação física real.
+Meu trabalho vai muito além de montar treino.
+
+Cada aluno é tratado de forma <span class="highlight">100% individualizada</span>.
+
+Analiso detalhadamente força, padrão de movimento, assimetrias,
+capacidade aeróbica e postura para construir um plano totalmente adaptado.
+
+Aqui você não segue um treino genérico.
+Você segue um método estruturado para evoluir com consistência e segurança.
+</p>
+</section>
+
+<!-- PROBLEMA -->
+<section class="section">
+<h2 class="title">Por que você não evolui?</h2>
+<div class="grid">
+<div class="card">Treino sem estratégia</div>
+<div class="card">Sem progressão real</div>
+<div class="card">Sem acompanhamento profissional</div>
+</div>
+</section>
+
+<!-- DIFERENCIAL -->
+<section class="section">
+<h2 class="title">O Diferencial do Método</h2>
+<div class="grid">
+
+<div class="card">
+<h3>Teste H/Q</h3>
+<p>
+Analisa a relação entre posteriores e quadríceps,
+indicando <span class="highlight">risco de lesão no joelho</span> e equilíbrio muscular.
+</p>
+</div>
+
+<div class="card">
+<h3>Assimetria Entre Pernas</h3>
+<p>
+Identifica diferenças de força entre membros,
+corrigindo padrões que podem gerar lesões.
+</p>
+</div>
+
+<div class="card">
+<h3>Teste de Força</h3>
+<p>
+Avaliação em <span class="highlight">extensão e flexão de joelho</span>
+para entender o nível real de força muscular.
+</p>
+</div>
+
+<div class="card">
+<h3>Capacidade Aeróbica</h3>
+<p>
+Avalia resistência e condicionamento para otimizar seu desempenho.
+</p>
+</div>
+
+<div class="card">
+<h3>Avaliação Postural</h3>
+<p>
+Corrige desalinhamentos e melhora eficiência do movimento.
+</p>
+</div>
+
+<div class="card">
+<h3>Bioimpedância</h3>
+<p>
+Análise completa da composição corporal para direcionar o treino com precisão.
+</p>
+</div>
+
+</div>
+</section>
+
+<!-- PLANOS -->
+<section class="section">
+<h2 class="title">Planos</h2>
+<div class="grid">
+
+<div class="card">
+<h3>Consultoria Online</h3>
+<p>
+Acompanhamento completo à distância com treino personalizado,
+ajustes constantes e suporte direto.
+Ideal para quem quer resultado com estratégia.
+</p>
+</div>
+
+<div class="card">
+<h3>Personal Presencial</h3>
+<p>
+Controle total do treino com acompanhamento em cada detalhe.
+Uso de <span class="highlight">caderno de progressão</span> para monitorar evolução.
+</p>
+</div>
+
+<div class="card">
+<h3>Natação</h3>
+<p>
+Treinamento técnico voltado para aprendizado,
+condicionamento e performance.
+</p>
+</div>
+
+<div class="card">
+<h3>Atendimento PCD</h3>
+<p>
+Treinos adaptados com foco em segurança,
+respeitando limitações e potencializando capacidades.
+</p>
+</div>
+<p style="text-align:center;margin-top:20px;">
+Sem treino genérico. Sem achismo. Só resultado.
+</p>
+</div>
+</section>
+
+<!-- PROVA SOCIAL -->
+<section class="section">
+<h2 class="title">Resultados Reais</h2>
+<div class="grid">
+<div class="card">"Evoluí mais em 3 meses do que em anos treinando sozinho."</div>
+<div class="card">"Treino totalmente diferente, tudo faz sentido."</div>
+<div class="card">"Resultado com segurança e consistência."</div>
+</div>
+</section>
+```html
+ ```html
+<<!-- RESULTADOS VISUAIS -->
+<section class="section">
+<h2 class="title">Resultados Reais</h2>
+
+<div class="grid">
+
+<div class="card" style="text-align:center;">
+<h3>Transformação</h3>
+
+<img src="antes.jpg" style="width:100%;border-radius:10px;margin-bottom:10px;">
+<p style="font-size:12px;color:#aaa;">ANTES</p>
+
+<img src="depois.jpg" style="width:100%;border-radius:10px;margin-top:10px;">
+<p style="font-size:12px;color:#aaa;">DEPOIS</p>
+<h3 style="text-align:center;margin-top:10px;">
+Resultado em poucos meses com método aplicado
+</h3>
+
+</div>
+
+<div class="card" style="text-align:center;">
+<h3>Na Prática</h3>
+
+<img src="aula.jpg" style="width:100%;border-radius:10px;">
+
+<p style="margin-top:10px;">
+Atendimento real, acompanhamento individual e adaptação completa para cada aluno.
+</p>
+
+</div>
+
+</div>
+</section>
+```
+`
+<p style="text-align:center;color:#00ff88;">
+⚠️ Vagas limitadas para acompanhamento individual
+</p>
+<!-- CTA -->
+<section class="section">
+<h2 class="title">COMECE AGORA</h2>
+<p style="text-align:center;">Clique abaixo e fale direto comigo</p>
+<div style="text-align:center;">
+<a href="https://wa.me/5531988786990?text=Quero%20começar%20agora" class="btn">
+FALAR NO WHATSAPP
+</a>
+</div>
+</section>
+
+<a href="https://wa.me/5531988786990" class="whatsapp">W</a>
+<script>
+window.onload = ()=>{
+document.getElementById('loader').style.display='none';
+}
+
+</script>
+<!-- FORMULÁRIO ANAMNESE -->
+<section class="section">
+<h2 class="title">Avaliação Inicial</h2>
+
+<form id="form">
+
+<input placeholder="Nome" id="nome" required><br><br>
+<input placeholder="Idade" id="idade"><br><br>
+<input placeholder="Altura (cm)" id="altura"><br><br>
+<input placeholder="Peso (kg)" id="peso"><br><br>
+
+<h3>Objetivo</h3>
+<select id="objetivo">
+<option>Emagrecimento</option>
+<option>Hipertrofia</option>
+<option>Performance</option>
+<option>Saúde</option>
+</select><br><br>
+
+<h3>Treino</h3>
+<input placeholder="Treina há quanto tempo?" id="tempo"><br><br>
+<input placeholder="Dias por semana" id="dias"><br><br>
+
+<h3>Lesão</h3>
+<input placeholder="Dor no joelho?" id="joelho"><br><br>
+<input placeholder="Já teve lesão?" id="lesao"><br><br>
+
+<h3>Assimetria</h3>
+<input placeholder="Sente uma perna mais fraca?" id="assimetria"><br><br>
+
+<h3>Força</h3>
+<input placeholder="Dificuldade em agachar?" id="agacho"><br><br>
+
+<h3>Aeróbico</h3>
+<input placeholder="Cansa rápido?" id="cardio"><br><br>
+
+<h3>Postura</h3>
+<input placeholder="Dores nas costas?" id="postura"><br><br>
+
+<h3>Hábitos</h3>
+<input placeholder="Alimentação?" id="alimentacao"><br><br>
+<input placeholder="Sono?" id="sono"><br><br>
+
+<button type="submit" class="btn">ENVIAR AVALIAÇÃO</button>
+
+</form>
+</section>
+
+<script>
+document.getElementById("form").addEventListener("submit", function(e){
+e.preventDefault();
+
+let msg = 
+"Nova Avaliação:%0A%0A" +
+"Nome: " + nome.value + "%0A" +
+"Idade: " + idade.value + "%0A" +
+"Altura: " + altura.value + "%0A" +
+"Peso: " + peso.value + "%0A%0A" +
+
+"Objetivo: " + objetivo.value + "%0A" +
+"Tempo treino: " + tempo.value + "%0A" +
+"Dias/semana: " + dias.value + "%0A%0A" +
+
+"Joelho: " + joelho.value + "%0A" +
+"Lesão: " + lesao.value + "%0A" +
+"Assimetria: " + assimetria.value + "%0A" +
+"Agachamento: " + agacho.value + "%0A%0A" +
+
+"Aeróbico: " + cardio.value + "%0A" +
+"Postura: " + postura.value + "%0A%0A" +
+
+"Alimentação: " + alimentacao.value + "%0A" +
+"Sono: " + sono.value;
+
+window.open("https://wa.me/5531988786990?text=" + msg);
+});
+</script>
+</body>
+</html>
+```
